@@ -27,7 +27,7 @@ export class Car {
             </div>
             <div class="text-end">
             <button class="btn btn-outline-warning" onclick="app.carsController.editCar('${this.id}')"> Edit </button>
-            <button class="btn btn-outline-danger" onclick="app.carsController.deleteCar('${this.id}')"> delete </button>
+            <button class="btn btn-outline-danger" onclick="app.carsController.deleteCar('${this.id}')"> Delete </button>
             </div>
           </div>
         </div>

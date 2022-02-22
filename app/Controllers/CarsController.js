@@ -31,12 +31,19 @@ export class CarsController {
       window.event.preventDefault()
       let form = window.event.target
       let rawData = {
+        // @ts-ignore
         make: form.make.value,
+        // @ts-ignore
         model: form.model.value,
+        // @ts-ignore
         year: form.year.value,
+        // @ts-ignore
         description: form.description.value,
+        // @ts-ignore
         price: form.price.value,
+        // @ts-ignore
         color: form.color.value,
+        // @ts-ignore
         imgUrl: form.imgUrl.value
       }
       if (!id) {
@@ -45,7 +52,9 @@ export class CarsController {
         carsService.editCar(rawData, id)
       }
       let modal = document.getElementById('new-listing')
+      // @ts-ignore
       form.reset()
+      // @ts-ignore
       bootstrap.Modal.getOrCreateInstance(modal).hide() //NOTE closes bootstrap modal
       Pop.toast('Complete')
     }
@@ -57,7 +66,6 @@ export class CarsController {
   async deleteCar(carId) {
     try {
       if (await Pop.confirm()) {
-        debugger
         // NOTE just passes the ID of the car to be deleted
         await carsService.deleteCar(carId)
       }
@@ -71,6 +79,7 @@ export class CarsController {
     const car = ProxyState.cars.find(c => c.id == carId)
     document.getElementById('modal-body-slot').innerHTML = getCarForm(car)
     let modal = document.getElementById('new-listing')
+    // @ts-ignore
     bootstrap.Modal.getOrCreateInstance(modal).toggle()
 
   }

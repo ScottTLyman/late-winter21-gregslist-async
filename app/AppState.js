@@ -4,6 +4,7 @@ import { isValidProp } from "./Utils/isValidProp.js"
 
 const testCar = new Car(
   {
+    id: '',
     make: 'GMC',
     model: 'Sierra',
     year: 2018,
@@ -18,7 +19,10 @@ class AppState extends EventEmitter {
   // NOTE just adds intellisense to our cars array that lets our code know its an array of cars, not other things 
   /** @type {import('./Models/Car').Car[]} */
   cars = [testCar]
+  /**@type {import('./Models/House').House[]} */
+  houses = []
 }
+
 
 
 export const ProxyState = new Proxy(new AppState(), {
