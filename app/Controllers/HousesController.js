@@ -26,25 +26,58 @@ export class HousesController {
     }
   }
 
-  createHouse(event) {
-    event.preventDefault()
-    let form = event.target
-    let newHouse = {
-      bedrooms: form.bedrooms.value,
-      bathrooms: form.bathrooms.value,
-      levels: form.levels.value,
-      year: form.year.value,
-      description: form.description.value,
-      price: form.price.value,
-      imgUrl: form.imgUrl.value
+  // @ts-ignore
+  async handleSubmit(id) {
+    try {
+      window.event.preventDefault()
+      let form = window.event.target
+      let rawData = {
+        // @ts-ignore
+        bedrooms: form.bedrooms.value,
+        // @ts-ignore
+        bathrooms: form.bathrooms.value,
+        // @ts-ignore
+        levels: form.levels.value,
+        // @ts-ignore
+        year: form.year.value,
+        // @ts-ignore
+        description: form.description.value,
+        // @ts-ignore
+        price: form.price.value,
+        // @ts-ignore
+        imgUrl: form.imgUrl.value
+      }
+      if (!id) {
+        housesService.createHouse(rawData)
+      } else {
+        housesService.editHouse(rawData, id)
+      }
+      let modal = document.getElementById('new-listing')
+      // @ts-ignore
+      form.reset()
+      // @ts-ignore
+      bootstrap.Modal.getOrCreateInstance(modal).hide()
+      Pop.toast('Submission Complete')
     }
-    housesService.createHouse(newHouse)
-    let modal = document.getElementById('new-listing')
-    form.reset()
-    // @ts-ignore
-    bootstrap.Modal.getOrCreateInstance(modal).hide()
+    catch (error) {
+      Pop.toast(error.message, 'error')
+    }
   }
-  deleteHouse(houseID) {
-    housesService.deleteHouse(houseID)
+  async deleteHouse(houseId) {
+    try {
+      if (await Pop.confirm()) {
+        housesService.deleteHouse(houseId)
+      }
+    } catch (error) {
+      console.error(error)
+      Pop.toast(error)
+    }
+  }
+  editHouse(houseId) {
+    const house = ProxyState.houses.find(h => h.id == houseId)
+    document.getElementById('modal-body-slot').innerHTML = getHouseForm(house)
+    let modal = document.getElementById('new-listing')
+    // @ts-ignore
+    bootstrap.Modal.getOrCreateInstance(modal).toggle()
   }
 }

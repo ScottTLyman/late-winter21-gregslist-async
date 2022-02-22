@@ -3,7 +3,7 @@ import { getCarForm } from "../Components/CarForm.js"
 import { carsService } from "../Services/CarsService.js"
 import { Pop } from "../Utils/Pop.js"
 
-function _draw() {
+function _drawCars() {
   let template = ''
   ProxyState.cars.forEach(c => template += c.Template)
   document.getElementById('listings').innerHTML = template
@@ -11,7 +11,7 @@ function _draw() {
 
 export class CarsController {
   constructor() {
-    ProxyState.on('cars', _draw)
+    ProxyState.on('cars', _drawCars)
     console.log('cars controller loaded')
 
   }
