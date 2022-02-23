@@ -8,27 +8,27 @@ export function getHouseForm(house = {}) {
   <h3 class="col-12">Create a House</h3>
   <div class="mb-3 col-3">
     <label for="" class="form-label">Bedrooms</label>
-    <input required type="number" class="form-control" name="bedrooms" id="bedrooms" aria-describedby="helpId"
-      placeholder="" value="${houseData.bedrooms}" min="1">
+    <input required type="text" class="form-control" name="bedrooms" id="bedrooms" aria-describedby="helpId"
+      placeholder="" value="${houseData.bedrooms}">
   </div>
   <div class="mb-3 col-3">
     <label for="" class="form-label">Bathrooms</label>
-    <input required type="number" class="form-control" name="bathrooms" id="bathrooms" aria-describedby="helpId"
-      placeholder="" value="${houseData.bathrooms}" min="1">
+    <input required type="text" class="form-control" name="bathrooms" id="bathrooms" aria-describedby="helpId"
+      placeholder="" value="${houseData.bathrooms}">
   </div>
   <div class="mb-3 col-3">
     <label for="" class="form-label">Levels</label>
-    <input required type="number" class="form-control" name="levels" id="levels" aria-describedby="helpId"
-      placeholder="" value="${houseData.levels}" min="1">
+    <input required type="text" class="form-control" name="levels" id="levels" aria-describedby="helpId"
+      placeholder="" value="${houseData.levels}">
   </div>
   <div class="mb-3 col-3">
   <label for="" class="form-label">Year</label>
-  <input required type="number" class="form-control" name="year" id="year" aria-describedby="helpId"
+  <input required type="text" class="form-control" name="year" id="year" aria-describedby="helpId"
   placeholder="" value="${houseData.year}">
   </div>
   <div class="mb-3 col-3">
     <label for="" class="form-label">Price</label>
-    <input required type="number" class="form-control" name="price" id="price" aria-describedby="helpId"
+    <input required type="text" class="form-control" name="price" id="price" aria-describedby="helpId"
       placeholder="" value="${houseData.price}">
   </div>
   <div class="mb-3 col-12">

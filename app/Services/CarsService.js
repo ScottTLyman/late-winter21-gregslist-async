@@ -37,7 +37,6 @@ class CarsService {
     //change in server 
     const res = await api.delete(`cars/${carId}`)
     console.log('[CarsService]: deleteCar', res.data)
-
     ProxyState.cars = ProxyState.cars.filter(c => c.id != carId)
   }
 

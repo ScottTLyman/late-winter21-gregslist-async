@@ -22,11 +22,11 @@ class HousesService {
     let realHouse = new House(res.data)
     ProxyState.houses = [realHouse, ...ProxyState.houses]
   }
-  deleteHouse(houseId) {
-    let indexToDelete = ProxyState.houses.findIndex(h => h.id == houseId)
-    ProxyState.houses.splice(indexToDelete, 1)
-    ProxyState.houses = ProxyState.houses
-    console.log("deleted", ProxyState.houses);
+  async deleteHouse(houseId) {
+    console.log('service deleting house', houseId)
+    const res = await api.delete(`houses/${houseId}`)
+    console.log('[HousesService]: deleteHouse', res.data)
+    ProxyState.houses = ProxyState.houses.filter(h => h.id != houseId);
   }
 }
 
